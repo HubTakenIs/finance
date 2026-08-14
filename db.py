@@ -13,3 +13,10 @@ def get_db_conn():
                 db_config["FileName"])
             )
     return db
+
+def setup_db():
+    conn = get_db_conn()
+    with open("./schema/schema.sql") as f:
+        conn.executescript(f.read())
+    conn.close()
+
