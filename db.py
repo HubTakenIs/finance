@@ -3,9 +3,14 @@ import configparser
 import os
 
 config = configparser.ConfigParser()
-config.read("./config.ini")
+try:
+    with open("./config.ini") as f:
+        config.read_file(f)
+except FileNotFoundError:
+    print("Config file not found, please create a config file.")
+    exit()
 db_config = config["Database"]
-
+# if no config, it fails.
 def get_db_conn():
     db = sqlite3.connect(
             os.path.join(

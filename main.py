@@ -1,5 +1,5 @@
 import calendar, datetime
-from db import get_db_conn, setup_db
+from db import get_db_conn
 
 def silly_func():
     out = []
